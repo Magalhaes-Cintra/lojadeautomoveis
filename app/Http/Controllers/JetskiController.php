@@ -27,15 +27,15 @@ class JetskiController extends Controller
     {
         $dadosJetskis = $request->All();
         $validarDados = Validator::make($dadosJetskis,[
-            'idiate' => '',
             'marca' => 'required',
             'modelo' => 'required',
             'cor' => 'required',
             'ano' => 'required',
+            'id' => 'required',
         ]);
 
         if($validarDados->fails()){
-            return 'Dados Invalidos.'.$validarDados->error(true). 500;
+            return 'Dados Invalidos.'.$validarDados->errors()->first();
         }
 
         $jetskisCadastrar = jetski::create($dadosJetskis);
@@ -71,6 +71,7 @@ class JetskiController extends Controller
             'modelo' => 'required',
             'cor'=> 'required',
             'ano'=> 'required',
+            'id' => 'required',
         ]);
 
         if($validarDados->fails()){

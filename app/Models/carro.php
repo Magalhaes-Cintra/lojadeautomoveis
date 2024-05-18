@@ -14,5 +14,6 @@ class carro extends Model
         'modelo',
         'cor',
         'ano',
+        'id',
     ];
 }

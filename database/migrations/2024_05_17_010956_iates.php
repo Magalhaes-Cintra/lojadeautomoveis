@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('iates', function (Blueprint $table) {
             $table->id();
-            $table->integer('idjetski')->default(1);
             $table->string('marca');
             $table->string('modelo');
             $table->string('cor');
             $table->string('ano');
+            $table->foreign('id')->references('id')->on('jetskis');
             $table->timestamps();
         });
     }

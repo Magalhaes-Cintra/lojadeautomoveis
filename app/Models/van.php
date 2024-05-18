@@ -14,5 +14,6 @@ class van extends Model
         'modelo',
         'cor',
         'ano',
+        'id',
     ];
 }

@@ -27,15 +27,15 @@ class IateController extends Controller
     {
         $dadosIate = $request->All();
         $validarDados = Validator::make($dadosIate,[
-            'idjetski' => '',
             'marca' => 'required',
             'modelo' => 'required',
             'cor' => 'required',
             'ano' => 'required',
+            'id' => 'required',
         ]);
 
         if($validarDados->fails()){
-            return 'Dados Invalidos.'.$validarDados->error(true). 500;
+            return 'Dados Invalidos.'.$validarDados->errors()->first();
         }
 
         $iatesCadastrar = iate::create($dadosIate);
@@ -71,6 +71,7 @@ class IateController extends Controller
             'modelo' => 'required',
             'cor'=> 'required',
             'ano'=> 'required',
+            'id' => 'required',
         ]);
 
         if($validarDados->fails()){

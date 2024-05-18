@@ -30,12 +30,11 @@ class MotoController extends Controller
     {
         $dadosMotos = $request->All();
         $validarDados = Validator::make($dadosMotos, [
-            'idcarro'=> '',
-            'idvan'=> '',
             'marca' => 'required',
             'modelo' => 'required',
             'cor' => 'required',
             'ano' => 'required',
+            'id' => 'required',
         ]);
 
         if($validarDados->fails()){
@@ -75,6 +74,7 @@ class MotoController extends Controller
             'modelo' => 'required',
             'cor'=> 'required',
             'ano'=> 'required',
+            'id' => 'required',
         ]);
 
         if($validarDados->fails()){
@@ -86,6 +86,7 @@ class MotoController extends Controller
         $moto->modelo = $dadosMotos['modelo'];
         $moto->cor = $dadosMotos['cor'];
         $moto->ano = $dadosMotos['ano'];
+        $moto->ano = $dadosMotos['id'];
 
         $retorno = $moto->save();
 

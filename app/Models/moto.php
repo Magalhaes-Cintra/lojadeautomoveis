@@ -14,5 +14,6 @@ class moto extends Model
         'modelo',
         'cor',
         'ano',
+        'id',
     ];
 }

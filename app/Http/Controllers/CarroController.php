@@ -28,16 +28,15 @@ class CarroController extends Controller
     {
         $dadosCarros = $request->All();
         $validarDados = Validator::make($dadosCarros,[
-            'idmoto' => '',
-            'idvan' => '',
             'marca' => 'required',
             'modelo' => 'required',
             'cor' => 'required',
             'ano' => 'required',
+            'id' => 'required',
         ]);
 
         if($validarDados->fails()){
-            return 'Dados Invalidos.'.$validarDados->error(true). 500;
+            return 'Dados Invalidos.'.$validarDados->errors()->first();
         }
 
         $carrosCadastrar = carro::create($dadosCarros);
@@ -73,6 +72,7 @@ class CarroController extends Controller
             'modelo' => 'required',
             'cor'=> 'required',
             'ano'=> 'required',
+            'id' => 'required',
         ]);
 
         if($validarDados->fails()){

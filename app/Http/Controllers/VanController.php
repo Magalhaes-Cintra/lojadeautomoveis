@@ -28,16 +28,15 @@ class VanController extends Controller
     {
         $dadosVans = $request->All();
         $validarDados = Validator::make($dadosVans,[
-            'idmoto' => '',
-            'idcarro' => '',
             'marca' => 'required',
             'modelo' => 'required',
             'cor' => 'required',
             'ano' => 'required',
+            'id' => 'required',
         ]);
 
         if($validarDados->fails()){
-            return 'Dados Invalidos.'.$validarDados->error(true). 500;
+            return 'Dados Invalidos.'.$validarDados->errors()->first();
         }
 
         $vansCadastrar = van::create($dadosVans);
@@ -73,6 +72,7 @@ class VanController extends Controller
             'modelo' => 'required',
             'cor'=> 'required',
             'ano'=> 'required',
+            'id' => 'required',
         ]);
 
         if($validarDados->fails()){

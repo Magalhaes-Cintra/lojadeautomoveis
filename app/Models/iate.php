@@ -14,5 +14,6 @@ class iate extends Model
         'modelo',
         'cor',
         'ano',
+        'id',
     ];
 }
