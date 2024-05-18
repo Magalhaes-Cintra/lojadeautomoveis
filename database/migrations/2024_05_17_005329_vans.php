@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('vans', function (Blueprint $table) {
             $table->id();
+            $table->integer('idcarro')->default(1);
+            $table->integer('idmoto')->default(1);
             $table->string('marca');
             $table->string('modelo');
             $table->string('cor');

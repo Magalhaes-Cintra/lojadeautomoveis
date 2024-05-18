@@ -27,6 +27,7 @@ class IateController extends Controller
     {
         $dadosIate = $request->All();
         $validarDados = Validator::make($dadosIate,[
+            'idjetski' => '',
             'marca' => 'required',
             'modelo' => 'required',
             'cor' => 'required',

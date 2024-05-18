@@ -28,6 +28,8 @@ class CarroController extends Controller
     {
         $dadosCarros = $request->All();
         $validarDados = Validator::make($dadosCarros,[
+            'idmoto' => '',
+            'idvan' => '',
             'marca' => 'required',
             'modelo' => 'required',
             'cor' => 'required',

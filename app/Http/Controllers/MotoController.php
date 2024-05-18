@@ -17,9 +17,10 @@ class MotoController extends Controller
     public function index()
     {
         $dadosMotos = moto::All();
-        $contador = $dadosMotos->count();
+        $contadorMotos = $dadosMotos->count();
+        
 
-        return 'Motos: '.$contador.$dadosMotos.Response()->json([],Response::HTTP_NO_CONTENT);
+        return 'Motos: '.$contadorMotos.$dadosMotos.Response()->json([],Response::HTTP_NO_CONTENT);
     }
 
     /**
@@ -28,7 +29,9 @@ class MotoController extends Controller
     public function store(Request $request)
     {
         $dadosMotos = $request->All();
-        $validarDados = Validator::make($dadosMotos,[
+        $validarDados = Validator::make($dadosMotos, [
+            'idcarro'=> '',
+            'idvan'=> '',
             'marca' => 'required',
             'modelo' => 'required',
             'cor' => 'required',
@@ -36,7 +39,7 @@ class MotoController extends Controller
         ]);
 
         if($validarDados->fails()){
-            return 'Dados Invalidos.'.$validarDados->error(true). 500;
+            return 'Dados Invalidos.'.$validarDados->errors()->first();
         }
 
         $motosCadastrar = moto::create($dadosMotos);

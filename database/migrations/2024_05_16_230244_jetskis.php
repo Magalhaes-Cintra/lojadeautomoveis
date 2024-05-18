@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('jetskis', function (Blueprint $table) {
             $table->id();
+            $table->integer('idiate')->default(1);
             $table->string('marca');
             $table->string('modelo');
             $table->string('cor');

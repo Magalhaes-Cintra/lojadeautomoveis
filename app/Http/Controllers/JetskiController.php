@@ -27,6 +27,7 @@ class JetskiController extends Controller
     {
         $dadosJetskis = $request->All();
         $validarDados = Validator::make($dadosJetskis,[
+            'idiate' => '',
             'marca' => 'required',
             'modelo' => 'required',
             'cor' => 'required',
